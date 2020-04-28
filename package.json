@@ -1,0 +1,32 @@
+{
+  "name": "telegram-text-entities-filler",
+  "version": "0.1.0",
+  "description": "Simply fills text with entities markup",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "prettier": "prettier --single-quote --trailing-comma es5 --write **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deptyped/telegram-text-entities-filler.git"
+  },
+  "keywords": [
+    "telegram",
+    "telegraf",
+    "bot"
+  ],
+  "author": "deptyped <deptyped@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deptyped/telegram-text-entities-filler/issues"
+  },
+  "homepage": "https://github.com/deptyped/telegram-text-entities-filler#readme",
+  "devDependencies": {
+    "jest": "^25.4.0",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
