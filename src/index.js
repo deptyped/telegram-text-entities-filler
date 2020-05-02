@@ -1,51 +1,35 @@
 const _ = require('lodash');
+const {
+  rewriteTextAtPosition,
+  insertTextAtPosition,
+  escapeChars,
+} = require('./utils')
 
-const rewriteTextAtPosition = (
-  text,
-  position,
-  rewriteText,
-  rewriteLength = rewriteText.length
-) =>
-  text.substr(0, position) +
-  rewriteText +
-  text.substr(position + rewriteLength);
-
-const insertTextAtPosition = (text, position, insertText) =>
-  rewriteTextAtPosition(text, position, insertText, 0);
+const escapeCommonChars = text =>
+  escapeChars(text, [
+    '_',
+    '*',
+    '[',
+    ']',
+    '(',
+    ')',
+    '~',
+    '`',
+    '>',
+    '#',
+    '+',
+    '-',
+    '=',
+    '|',
+    '{',
+    '}',
+    '.',
+    '!',
+  ]);
+const escapeCodeChars = text => escapeChars(text, ['`', '\\']);
+const escapeLinkChars = text => escapeCommonChars(escapeChars(text, [')', '\\']));
 
 const escapeMarkdownTextByEntity = (text, entity) => {
-  const escapeChars = (text, charsToEscape) => {
-    for (const char of charsToEscape) {
-      text = text.split(char).join(`\\${char}`);
-    }
-
-    return text;
-  };
-
-  const escapeCommonChars = text =>
-    escapeChars(text, [
-      '_',
-      '*',
-      '[',
-      ']',
-      '(',
-      ')',
-      '~',
-      '`',
-      '>',
-      '#',
-      '+',
-      '-',
-      '=',
-      '|',
-      '{',
-      '}',
-      '.',
-      '!',
-    ]);
-  const escapeCodeChars = text => escapeChars(text, ['`', '\\']);
-  const escapeLinkChars = text => escapeChars(text, [')', '\\']);
-
   if (entity.type === 'bold') {
     return escapeCommonChars(text);
   } else if (entity.type === 'italic') {
@@ -191,4 +175,7 @@ const fillMarkdownEntitiesMarkup = (text, entities) => {
 
 module.exports = {
   fillMarkdownEntitiesMarkup,
+  escapeCommonChars,
+  escapeLinkChars,
+  escapeCodeChars,
 };

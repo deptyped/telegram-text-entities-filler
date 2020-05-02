@@ -1,6 +1,6 @@
 {
   "name": "telegram-text-entities-filler",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simply fills text with entities markup",
   "main": "src/index.js",
   "scripts": {
