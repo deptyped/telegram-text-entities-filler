@@ -1,3 +1,5 @@
+## DEPRECATED: Bot API since [version 5](https://core.telegram.org/bots/api#november-4-2020) has ability to specify message entities using [MessageEntity](https://core.telegram.org/bots/api#messageentity)
+
 ### Introduction
 
 Simple library that helps fills text with entities markup
